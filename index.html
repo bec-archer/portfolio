@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rebecca "Bec" Archer — Visual Content Creator & Gulf Coast Angler</title>
+    <!-- Avenir system font with fallback stack -->
+    <style>
+        :root {
+            --teal: #5fb8b2;
+            --teal-dark: #3d9e97;
+            --teal-light: #a8ddd9;
+            --teal-faint: #e8f6f5;
+            --ink: #1a2a2a;
+            --body: #4a5656;
+            --muted: #7a8a8a;
+            --sand: #f7f5f2;
+            --white: #ffffff;
+            --border: #dde8e7;
+            --shadow-sm: 0 2px 8px rgba(26, 42, 42, 0.06);
+            --shadow-md: 0 8px 24px rgba(26, 42, 42, 0.08);
+            --shadow-lg: 0 16px 48px rgba(26, 42, 42, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Avenir', 'Avenir Next', -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: var(--body);
+            background-color: var(--white);
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══════════════ NAV ═══════════════ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: box-shadow 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo-img {
+            height: 36px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--teal);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--teal-dark);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile nav toggle */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--ink);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* ═══════════════ HERO ═══════════════ */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            padding: 6.5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+            background: var(--ink) url('video/hero-poster.jpg') center/cover no-repeat;
+        }
+
+        .hero-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            /* styled inline */
+        }
+
+        .hero > *:not(.hero-video-bg):not(.hero-overlay) {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            padding: 0.5rem 1.25rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            animation: fadeDown 0.8s ease-out;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--teal-light);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-family: 'Avenir', 'Avenir Next', -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-size: clamp(2.25rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            animation: fadeDown 0.8s ease-out 0.1s both;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h2 {
+            font-size: clamp(1rem, 2.5vw, 1.35rem);
+            font-weight: 500;
+            color: var(--teal-light);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.02em;
+            animation: fadeDown 0.8s ease-out 0.2s both;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            max-width: 680px;
+            margin: 0 auto 0;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.85);
+            animation: fadeDown 0.8s ease-out 0.3s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: auto;
+            padding-bottom: 1rem;
+            animation: fadeDown 0.8s ease-out 0.4s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            border-radius: 100px;
+            font-family: 'Avenir', 'Avenir Next', -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--teal);
+            color: var(--white);
+            box-shadow: 0 4px 16px rgba(95, 184, 178, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--teal-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(95, 184, 178, 0.4);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(4px);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--teal-light);
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* ═══════════════ SECTIONS ═══════════════ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--teal);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 32px;
+            height: 2px;
+            background: var(--teal);
+        }
+
+        .section-label::after {
+            content: '⇢';
+            color: var(--teal);
+            font-weight: 700;
+            font-size: 1.6rem;
+        }
+
+        .section-title {
+            font-family: 'Avenir', 'Avenir Next', -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            color: var(--ink);
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        .section-intro {
+            font-size: 1.05rem;
+            color: var(--body);
+            max-width: 750px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        /* Alternating section backgrounds */
+        section:nth-child(even) {
+            background: var(--sand);
+        }
+
+        /* ═══════════════ ABOUT ═══════════════ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .about-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.25rem;
+            transition: all 0.3s ease;
+        }
+
+        section:nth-child(even) .about-card {
+            background: var(--white);
+        }
+
+        .about-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .about-card h3 {
+            font-family: 'Avenir', 'Avenir Next', -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.35rem;
+            color: var(--ink);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .about-card h3 .icon {
+            width: 40px;
+            height: 40px;
+            background: var(--teal-faint);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .about-list {
+            list-style: none;
+        }
+
+        .about-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: var(--body);
+            border-bottom: 1px solid var(--teal-faint);
+        }
+
+        .about-list li:last-child {
+            border-bottom: none;
+        }
+
+        .about-list li::before {
+            content: '⇢';
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        /* ═══════════════ PHOTO GRID ═══════════════ */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .photo-grid.grid-2col {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            aspect-ratio: 4/3;
+            background: var(--teal-faint);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            border: 1px solid var(--border);
+        }
+
+        .photo-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Fishing section: natural image height */
+        #fishing .photo-item {
+            aspect-ratio: unset;
+        }
+
+        #fishing .photo-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+
+        /* Safety section: 2-column grid, natural image height */
+        #safety .photo-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        #safety .photo-item {
+            aspect-ratio: unset;
+        }
+
+        #safety .photo-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+
+        /* Design section */
+        #design .design-grid {
+            display: grid;
+            grid-template-columns: 600px 1fr;
+            gap: 1.25rem;
+            align-items: start;
+        }
+
+        #design .design-left {
+            width: 600px;
+        }
+
+        #design .design-left .photo-item {
+            aspect-ratio: unset;
+            height: auto;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        #design .design-left .photo-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        #design .design-right {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        #design .design-right .photo-item {
+            aspect-ratio: 4/3;
+            width: 100%;
+        }
+
+        #design .design-right .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Lucy section */
+        #lucy .photo-item {
+            aspect-ratio: unset;
+        }
+
+        #lucy .photo-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+
+        .photo-placeholder {
+            color: var(--teal);
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 2rem;
+            font-weight: 500;
+            opacity: 0.7;
+        }
+
+        /* Feature/span items */
+        .photo-item.featured {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        /* ═══════════════ NSFW OVERLAY ═══════════════ */
+        .nsfw-item {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .nsfw-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            background: var(--ink);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: opacity 0.4s ease;
+            border-radius: 11px;
+        }
+
+        .nsfw-icon {
+            font-size: 2rem;
+        }
+
+        .nsfw-label {
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
+        }
+
+        .nsfw-tap {
+            color: var(--teal-light);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-top: 0.25rem;
+            opacity: 0.8;
+        }
+
+        .nsfw-item:hover .nsfw-overlay {
+            background: rgba(26, 42, 42, 0.9);
+        }
+
+        .nsfw-item.revealed .nsfw-overlay {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* ═══════════════ FOOTER ═══════════════ */
+        footer {
+            background: var(--ink);
+            color: var(--white);
+            padding: 5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--teal), var(--teal-light), var(--teal));
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .footer-left h3 {
+            font-family: 'Avenir', 'Avenir Next', -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-logo {
+            height: 48px;
+            width: auto;
+            margin-bottom: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .footer-left p {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 0.95rem;
+            max-width: 420px;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-contact a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .footer-contact a:hover {
+            color: var(--teal-light);
+        }
+
+        .footer-contact .contact-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        .footer-right .btn-primary {
+            margin-bottom: 1rem;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.85rem;
+        }
+
+        /* ═══════════════ SCROLL REVEAL ═══════════════ */
+        .js-enabled .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .js-enabled .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger children */
+        .js-enabled .reveal-children > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .js-enabled .reveal-children.visible > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-children.visible > *:nth-child(1) { transition-delay: 0s; }
+        .reveal-children.visible > *:nth-child(2) { transition-delay: 0.08s; }
+        .reveal-children.visible > *:nth-child(3) { transition-delay: 0.16s; }
+        .reveal-children.visible > *:nth-child(4) { transition-delay: 0.24s; }
+        .reveal-children.visible > *:nth-child(5) { transition-delay: 0.32s; }
+        .reveal-children.visible > *:nth-child(6) { transition-delay: 0.4s; }
+
+        /* ═══════════════ ANIMATIONS ═══════════════ */
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ═══════════════ RESPONSIVE ═══════════════ */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1.5rem 2rem;
+                gap: 1rem;
+                border-bottom: 1px solid var(--border);
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero {
+                min-height: 70vh;
+                padding: 5.5rem 1.5rem 2rem;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-grid,
+            .photo-grid.grid-2col {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-item.featured {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-right {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-cta {
+                flex-direction: column;
+                width: 100%;
+                padding: 0 1rem;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo"><img src="images/BA_Brand_Small.png" alt="Bec Archer" class="nav-logo-img"></a>
+            <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+                <span></span><span></span><span></span>
+                        </button>
+                        <ul class="nav-links">
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#fishing">Fishing</a></li>
+                            <li><a href="#underwater">Underwater</a></li>
+                            <li><a href="#design">Design</a></li>
+                            <li><a href="#web">Web</a></li>
+                            <li><a href="#lucy">Lucy</a></li>
+                            <li><a href="#safety">Safety</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <video class="hero-video-bg" autoplay muted loop playsinline poster="video/hero-poster.jpg">
+            <source src="video/hero-video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay" style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom,rgba(26,42,42,0.9) 0%,rgba(26,42,42,0.6) 35%,rgba(26,42,42,0.1) 55%,transparent 65%);z-index:1;pointer-events:none;"></div>
+        <div class="hero-badge">Gulf Coast · SW Florida</div>
+        <h1>Rebecca "Bec" Archer</h1>
+        <h2>Visual Content Creator &amp; Gulf Coast Angler</h2>
+        <p class="hero-description">
+            20+ years of professional graphic design experience meets authentic Gulf reef fishing knowledge. I create content that resonates with anglers because I am one.
+        </p>
+        <div class="hero-cta">
+            <a href="#fishing" class="btn btn-primary">View Portfolio ↓</a>
+            <a href="images/B_Archer_Resume.pdf" class="btn btn-outline" download>Download Resume</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">Background</span>
+                <h2 class="section-title">About</h2>
+                <p class="section-intro">
+                    I'm a visual content creator with two decades of Adobe Creative Suite mastery, hands-on fishing experience on Gulf waters, and the underwater filming capability to capture authentic marine content. As a Gulf Coast angler who owns and operates a 50-foot offshore vessel, I understand the Return 'Em Right mission from both sides: as a professional content creator and as someone who uses descending devices on every offshore trip.
+                </p>
+            </div>
+            <div class="about-grid reveal-children">
+                <div class="about-card">
+                    <h3><span class="icon">🎨</span> Content Creation</h3>
+                    <ul class="about-list">
+                        <li>Adobe Creative Suite expert (20+ years)</li>
+                        <li>Photography &amp; videography</li>
+                        <li>WordPress development</li>
+                        <li>Brand identity &amp; visual storytelling</li>
+                        <li>Social media strategy</li>
+                    </ul>
+                </div>
+                <div class="about-card">
+                    <h3><span class="icon">⚓</span> Marine Experience</h3>
+                    <ul class="about-list">
+                        <li>Active SWFL angler</li>
+                        <li>On the water year-round — offshore reef fishing (1980 Hatteras 50C) and inshore flats fishing (Pro-Line Stalker 183)</li>
+                        <li>Underwater filming (Blu3 Nomad & GoPro)</li>
+                        <li>Red snapper, grouper, sheepshead, amberjack</li>
+                        <li>Firsthand descending device use</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fishing & Marine Content Section -->
+    <section id="fishing">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">Portfolio</span>
+                <h2 class="section-title">Fishing &amp; Marine Content</h2>
+                <p class="section-intro">
+                    Red snapper, mangrove snapper, and sheepshead: the species Return 'Em Right works to protect are the same ones we've been targeting on Gulf Coast reefs for years. These images were taken in our Gulf waters, with the exception of the jellyfish, who are residents of Mote Marine Laboratory.
+                </p>
+            </div>
+            <div class="photo-grid reveal-children">
+                <div class="photo-item featured">
+                    <img src="images/fishing1.jpg" alt="View from the flybridge of Knot Today">
+                </div>
+                <div class="photo-item">
+                    <img src="images/mangrove.jpg" alt="Mangrove snapper for dinner">
+                </div>
+                <div class="photo-item">
+                    <img src="images/fishing3.jpg" alt="Sheepshead close-up featuring peopleteeth">
+                </div>
+                <div class="photo-item">
+                    <img src="images/fishing4.jpg" alt="On-water action shot during an offshore fishing expedition">
+                </div>
+                <div class="photo-item">
+                    <img src="images/fishing5.jpg" alt="Jellyfish at MOTE">
+                </div>
+                <div class="photo-item">
+                    <img src="images/fishing2.jpg" alt="Fresh red snapper caught from a Gulf reef fishing trip">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Underwater Content Section -->
+    <section id="underwater">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">Portfolio</span>
+                <h2 class="section-title">Underwater Content</h2>
+                <p class="section-intro">
+                    GoPro underwater filming capability using Blu3 hookah diving system. Experience capturing marine life, underwater environments, and diving content in Gulf and Florida Keys waters.
+                </p>
+            </div>
+            <div class="photo-grid grid-2col reveal-children">
+                <div class="photo-item">
+                    <img src="images/goPro/looe_key.png" alt="Blacktip shark - Looe Key">
+                </div>
+                <div class="photo-item">
+                    <img src="images/goPro/fishyfishy.jpg" alt="Big Pine Key">
+                </div>
+                <div class="photo-item">
+                    <img src="images/goPro/shark.jpg" alt="Nurse shark - Marathon">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Work Section -->
+    <section id="design">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">Portfolio</span>
+                <h2 class="section-title">Design Work</h2>
+                <p class="section-intro">
+                    Professional graphic design work spanning brand identity, marketing materials, signage, and visual communications. Adobe Creative Suite projects demonstrating versatility across print, digital, and branded content creation.
+                </p>
+            </div>
+            <div class="design-grid reveal-children">
+                <div class="design-left">
+                    <div class="photo-item">
+                        <img src="images/design/Neglected_Oak.jpg" alt="Lee's Trees skyscraper print ad">
+                    </div>
+                </div>
+                <div class="design-right">
+                    <div class="photo-item"><img src="images/design/AdvancedMobileRepair.png" alt="Advanced Mobile Repair logo design"></div>
+                    <div class="photo-item"><img src="images/design/bradleys.jpg" alt="Print ad - Bradley's Jewelers"></div>
+                    <div class="photo-item"><img src="images/design/real_good.jpg" alt="Catalog layout - Bee Authentic"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Web Development Section -->
+    <section id="web">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">Portfolio</span>
+                <h2 class="section-title">Web Development</h2>
+                <p class="section-intro">
+                    WordPress websites built for business marketing and customer engagement. Experience includes site architecture, content strategy, responsive design, and ongoing maintenance.
+                </p>
+            </div>
+            <div class="photo-grid grid-2col reveal-children">
+                <div class="photo-item">
+                    <img src="images/webDev/sobeeco.jpg" alt="Southern Bee Co website screenshot">
+                </div>
+                <div class="photo-item">
+                    <img src="images/webDev/hydraulics.jpg" alt="Hydraulics SR-80 website screenshot">
+                </div>
+                <div class="photo-item">
+                    <img src="images/webDev/leestrees_mockup.jpg" alt="Lee's Trees website redesign screenshot">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lucy Character Series Section -->
+    <section id="lucy">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">Portfolio</span>
+                <h2 class="section-title">Character Design — "Lucy" Series</h2>
+                <p class="section-intro">
+                    Original pinup character created for Hydraulics SR-80 and deployed across the brand, from shop signage and apparel to internal communications. Lucy demonstrates the full arc from character concept to real-world brand asset, living across multiple formats and surfaces throughout the business.
+                </p>
+            </div>
+            <div class="photo-grid reveal-children">
+                <div class="photo-item">
+                    <img src="images/lucy/Lucy-original.png" alt="Lucy Lube-A-Lot">
+                </div>
+                <div class="photo-item">
+                    <img src="images/lucy/lucy-shirt.jpg" alt="Lucy Fishing Shirts">
+                </div>
+                <div class="photo-item">
+                    <img src="images/lucy/lucy_oil.jpg" alt="Got Oil? poster featuring Lucy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/lucy/lucy-broke.jpg" alt="Lucy poster for the backdoor of the shop">
+                </div>
+                <div class="photo-item">
+                    <img src="images/lucy/lucy-winning.jpg" alt="Lucy when we're on top of things">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Poster Series Section -->
+    <section id="safety">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">Portfolio</span>
+                <h2 class="section-title">Workplace Safety Poster Series</h2>
+                <p class="section-intro">
+                    Commissioned by management at Hydraulics SR-80 to create a series of workplace safety posters for the shop floor. The creative brief was deliberate: use graphic, visceral imagery that employees couldn't ignore. In a hydraulic shop where complacency around heavy machinery, high-pressure systems, and industrial tools can have severe consequences, traditional "clip-art and a slogan" safety posters get tuned out. These were designed to stop people in their tracks...because that's exactly what safety messaging needs to do when the stakes are real.
+                </p>
+                <p class="section-intro" style="margin-top: -1.5rem; font-size: 0.95rem; color: var(--muted);">
+                    ⚠️ <strong>Content note:</strong> These posters contain intentionally graphic imagery depicting workplace injury scenarios. Click to reveal.
+                </p>
+            </div>
+            <div class="photo-grid grid-2col reveal-children">
+                <div class="photo-item nsfw-item" onclick="this.classList.toggle('revealed')">
+                    <div class="nsfw-overlay"><span class="nsfw-icon">⚠️</span><span class="nsfw-label">Graphic Content</span><span class="nsfw-tap">Click to reveal</span></div>
+                    <img src="images/WSP/Hydraulics_safety_poster_spoon_thru_hand.png" alt="Workplace safety poster">
+                </div>
+                <div class="photo-item nsfw-item" onclick="this.classList.toggle('revealed')">
+                    <div class="nsfw-overlay"><span class="nsfw-icon">⚠️</span><span class="nsfw-label">Graphic Content</span><span class="nsfw-tap">Click to reveal</span></div>
+                    <img src="images/WSP/Hydraulics_safety_poster_eye.png" alt="Workplace safety poster">
+                </div>
+                <div class="photo-item nsfw-item" onclick="this.classList.toggle('revealed')">
+                    <div class="nsfw-overlay"><span class="nsfw-icon">⚠️</span><span class="nsfw-label">Graphic Content</span><span class="nsfw-tap">Click to reveal</span></div>
+                    <img src="images/WSP/Hydraulics_safety_poster_foot_crush.png" alt="Workplace safety poster">
+                </div>
+                <div class="photo-item nsfw-item" onclick="this.classList.toggle('revealed')">
+                    <div class="nsfw-overlay"><span class="nsfw-icon">⚠️</span><span class="nsfw-label">Graphic Content</span><span class="nsfw-tap">Click to reveal</span></div>
+                    <img src="images/WSP/Hydraulics_safety_poster_gloves.png" alt="Workplace safety poster">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <img src="images/BA_Brand_Small.png" alt="Bec Archer" class="footer-logo">
+                <h3>Let's Connect</h3>
+                <p>Interested in working together? I'd love to hear from you.</p>
+                <div class="footer-contact">
+                    <a href="mailto:beckeeper78@gmail.com">
+                        <span class="contact-icon">✉</span>
+                        beckeeper78@gmail.com
+                    </a>
+                    <a href="tel:239-246-7352">
+                        <span class="contact-icon">☎</span>
+                        239-246-7352
+                    </a>
+                    <a>
+                        <span class="contact-icon">📍</span>
+                        Punta Gorda, FL
+                    </a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <a href="images/B_Archer_Resume.pdf" class="btn btn-primary" download>Download Resume</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Rebecca Archer. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Enable scroll animations only if JS is running
+        document.body.classList.add('js-enabled');
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal, .reveal-children').forEach(el => observer.observe(el));
+
+        // Nav shadow on scroll
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        // Close mobile nav on link click
